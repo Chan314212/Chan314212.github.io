@@ -4,7 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="theme-color" content=#58b77a>
-  <title>欢迎来到我的Blog</title>
+  <title>基于python的视频信息读取 | 欢迎来到我的Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="author" content="陈鸿晖">
   <meta name="keywords" content="">
@@ -64,17 +64,18 @@
 
 <meta name="generator" content="Hexo 7.2.0"></head>
 <body>
-<div id="page">
+<div class="single">
 
+<div id="page">
 <div class="header">
-  <div id="lx-aside" style="background-image: url(/dist/images/cover.min.jpeg)">
+  <div id="lx-aside" style="background-image: url(/dist/images/post_cover.min.jpeg)" data-stellar-background-ratio="0.5">
     <div class="overlay">
       
-      <div class="featured">
+      <div class="page-title">
         <div class="avatar"><a href="/"><img src="/dist/images/my.jpeg" alt="陈鸿晖"></a></div>
-        <span>陈鸿晖</span>
-        <h1>欢迎来到我的Blog</h1>
-        
+        <span>2024-05-25</span>
+        <h2>基于python的视频信...</h2>
+        <div class="tags"><i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/Python/" rel="tag">Python</a> <i class="fa fa-tag"></i><a class="tag-none-link" href="/tags/%E8%A7%86%E9%A2%91/" rel="tag">视频</a></div>
         
       </div>
     </div>
@@ -82,58 +83,48 @@
 </div>
 <div id="lx-main-content">
   <div class="lx-post">
-
-  <div class="lx-entry padding">
-    <div>
-      <h2 class="title"><a href="/2024/05/25/%E5%9F%BA%E4%BA%8Epython%E7%9A%84%E8%A7%86%E9%A2%91%E4%BF%A1%E6%81%AF%E8%AF%BB%E5%8F%96/">基于python的视频信息读取</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2024-05-25</span>
-      <p><p>使用Python中的openCV库读取视频信息。<br>代码如下：</p>
+    <div class="lx-entry padding">
+      <div>
+        <p>使用Python中的openCV库读取视频信息。<br>代码如下：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">from</span> tool <span class="keyword">import</span> getfilepath</span><br><span class="line"><span class="comment">#打开视频文件</span></span><br><span class="line">video_path = getfilepath()  <span class="comment"># 修改为你的视频文件路径</span></span><br><span class="line">cap = cv2.VideoCapture(video_path)</span><br><span class="line"></span><br><span class="line"><span class="comment">#获取视频的基本信息</span></span><br><span class="line">fps = cap.get(cv2.CAP_PROP_FPS)  <span class="comment"># 帧率</span></span><br><span class="line">total_frames = <span class="built_in">int</span>(cap.get(cv2.CAP_PROP_FRAME_COUNT))  <span class="comment"># 总帧数</span></span><br><span class="line">duration = total_frames / fps  <span class="comment"># 视频时长（秒）</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#获取视频的分辨率</span></span><br><span class="line">width = <span class="built_in">int</span>(cap.get(cv2.CAP_PROP_FRAME_WIDTH))  <span class="comment"># 宽度</span></span><br><span class="line">height = <span class="built_in">int</span>(cap.get(cv2.CAP_PROP_FRAME_HEIGHT))  <span class="comment"># 高度</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#输出视频信息</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;帧率：&quot;</span>, fps)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;总帧数：&quot;</span>, total_frames)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;视频时长（秒）：&quot;</span>, duration)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;分辨率：&quot;</span>, (width, height))</span><br><span class="line"></span><br><span class="line"><span class="comment">#释放视频对象</span></span><br><span class="line">cap.release()</span><br></pre></td></tr></table></figure>
 
 <p>其中<code>getfilepath()</code>函数为获取文件路径的函数，具体实现可以参考其他文章。</p>
 <p>运行结果如下：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">帧率： 29.97002997002997</span><br><span class="line">总帧数： 102</span><br><span class="line">视频时长（秒）： 3.4034</span><br><span class="line">分辨率： (720, 1280)</span><br></pre></td></tr></table></figure></p>
-      <div class="post-button"><a class="btn" href="/2024/05/25/%E5%9F%BA%E4%BA%8Epython%E7%9A%84%E8%A7%86%E9%A2%91%E4%BF%A1%E6%81%AF%E8%AF%BB%E5%8F%96/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">帧率： 29.97002997002997</span><br><span class="line">总帧数： 102</span><br><span class="line">视频时长（秒）： 3.4034</span><br><span class="line">分辨率： (720, 1280)</span><br></pre></td></tr></table></figure>
+      </div>
     </div>
   </div>
-  <div class="lx-entry padding">
-    <div>
-      <h2 class="title"><a href="/2024/05/25/Git-%E4%B8%8A%E4%BC%A0-Github-%E6%95%99%E7%A8%8B%EF%BC%88%E9%83%A8%E5%88%86%EF%BC%89/">Git 上传 Github 教程（部分）</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2024-05-25</span>
-      <p><h1 id="Git-上传-Github-教程（部分）"><a href="#Git-上传-Github-教程（部分）" class="headerlink" title="Git 上传 Github 教程（部分）"></a>Git 上传 Github 教程（部分）</h1><p>（其他问题不讨论：如何科学上网？如何安装Git？……）</p>
-<ol>
-<li><p>本地新建文件夹</p>
-</li>
-<li><p>cmd，执行 <code>git init</code>，将文件夹变成git仓库</p>
-</li>
-<li><p>将文件移动到此文件夹，执行 <code>git add .</code>，将文件添加到git仓库</p>
-</li>
-<li><p>SSH_key密钥……懒得说啦。百度一下吧：）</p>
-</li>
-<li><p>执行 <code>git commit -m &quot;xxx&quot;</code>，确认添加，其中<code>-m</code>是添加commit的描述，可以不加，不加的话，默认是空的。</p>
-</li>
-<li><p>关联本地仓库与github：执行 <code>git remote add origin https://github.com/xxx/xxx.git</code>（此链接为github的链接，使用ssh或https都可以）</p>
-</li>
-<li><p>执行 <code>git push -u origin main</code> 由于新建的远程仓库是空的，所以要加上-u这个参数，等远程仓库里面有了内容之后，下次再从本地库上传内容的时候只需下面这样就可以了：<code>git push origin main</code></p>
-</li>
-</ol>
-</p>
-      <div class="post-button"><a class="btn" href="/2024/05/25/Git-%E4%B8%8A%E4%BC%A0-Github-%E6%95%99%E7%A8%8B%EF%BC%88%E9%83%A8%E5%88%86%EF%BC%89/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
-    </div>
-  </div>
-  <div class="lx-entry padding">
-    <div>
-      <h2 class="title"><a href="/2024/05/25/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%EF%BC%8C%E5%AE%8C%E5%B7%A5%E5%95%A6%EF%BC%81/">我的博客，完工啦！</a></h2>
-      <span class="lx-post-detail"><i class="fa fa-calendar-o"></i> 2024-05-25</span>
-      <p><p>24年5月25日，我博客终于完工啦！<br>其实没有花费太长时间，也就一个中午；<br>用的是现成的框架，就是hexo，然后改了点东西，就OK了。</p>
-<p>心情不错，ps:晚餐的苦瓜真难吃: （</p>
-</p>
-      <div class="post-button"><a class="btn" href="/2024/05/25/%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%EF%BC%8C%E5%AE%8C%E5%B7%A5%E5%95%A6%EF%BC%81/" rel="noopener"><i class="fa fa-angle-double-right fa-fw"></i>阅读更多</a></div>
-    </div>
-  </div>
+</div>
+<div class="lx-navigation">
+	<div class="lx-cover next lx-cover-sm" style="background-image: url(/dist/images/footer-l.min.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="#">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Next</span>
+						<h3>没有更新的文章</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+        <div class="lx-cover prev lx-cover-sm" style="background-image: url(/dist/images/footer-r.min.jpeg)">
+		<div class="overlay"></div>
+		<a class="copy" href="/2024/05/25/Git-%E4%B8%8A%E4%BC%A0-Github-%E6%95%99%E7%A8%8B%EF%BC%88%E9%83%A8%E5%88%86%EF%BC%89/">
+			<div class="display-t">
+				<div class="display-tc">
+					<div>
+						<span>Prev</span>
+						<h3>Git 上传 ...</h3>
+					</div>
+				</div>
+			</div>
+		</a>
+	</div>
+</div>
 
-
-
+</div>
 
 <footer>
   <div>
@@ -141,8 +132,6 @@
   </div>
 </footer>
 
-  </div>
-</div>
 </div>
 
 <button class="hamburger hamburger--arrow-r" type="button" title="menu">
